@@ -16,6 +16,7 @@ class DashboardPage():
         self.click_site_settings_xpath    = "//span[normalize-space()='Site Settings']"
         self.click_business_profile_xpath = "//span[normalize-space()='Business Profile']"
         self.click_billing_frequency_xpath= "//span[normalize-space()='Billing Frequency']"
+        self.click_billing_cycle_xpath    = "//span[normalize-space()='Billing Cycle']"
 
     def click_account(self):
         self.driver.find_element(By.XPATH, self.account_link_xpath).click()
@@ -43,3 +44,6 @@ class DashboardPage():
 
     def click_billing_frequency(self):
         self.driver.find_element(By.XPATH, self.click_billing_frequency_xpath).click()
+
+    def click_billing_cycle(self):
+        self.driver.find_element(By.XPATH, self.click_billing_cycle_xpath).click()

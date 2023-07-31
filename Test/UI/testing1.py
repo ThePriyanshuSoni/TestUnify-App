@@ -9,7 +9,7 @@ from selenium.webdriver.support.select import Select
 
 driver = webdriver.Chrome()
 
-driver.implicitly_wait(10)
+driver.implicitly_wait(9)
 driver.maximize_window()
 
 driver.get("http://unifyng.inventum.co/login")
@@ -18,9 +18,9 @@ driver.find_element(By.XPATH, "//button[normalize-space()='Continue']").click()
 driver.find_element(By.XPATH, "//input[@id='username']").send_keys("priyanshu")
 driver.find_element(By.XPATH, "//input[@id='password']").send_keys("password")
 driver.find_element(By.XPATH, "//input[@id='kc-login']").click()
-time.sleep(2)
+time.sleep(3)
 driver.find_element(By.XPATH, "//span[normalize-space()='Settings']").click()
 driver.find_element(By.XPATH, "//span[normalize-space()='Site Settings']").click()
-driver.find_element(By.XPATH, "//span[normalize-space()='Billing Frequency']").click()
 
 time.sleep(2)
+driv

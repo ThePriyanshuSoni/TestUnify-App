@@ -8,7 +8,7 @@ class AddBusinessProfilePage():
     def __init__(self, driver):
         self.driver = driver
 
-        self.click_add_b_profile_xpath   = "//button[normalize-space()='Add Business Profile']"
+        self.add_b_profile_xpath   = "//button[normalize-space()='Add Business Profile']"
         self.businessname_textbox_xpath  = "//input[@id='businessName']"
         self.cin_number_textbox_id       = "cinNumber"
         self.address_textbox_id          = "address"
@@ -26,7 +26,7 @@ class AddBusinessProfilePage():
         self.save_button_xpath           = "//button[normalize-space()='Save']"
 
     def click_add_bussiness_profile(self):
-        self.driver.find_element(By.XPATH, self.click_add_b_profile_xpath).click()
+        self.driver.find_element(By.XPATH, self.add_b_profile_xpath).click()
 
     def enter_businessname(self, business):
         self.driver.find_element(By.XPATH, self.businessname_textbox_xpath).send_keys(business)
