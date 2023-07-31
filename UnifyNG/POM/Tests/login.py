@@ -12,6 +12,8 @@ from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
 
 class LoginTest(unittest.TestCase):
 
+    driver = None
+
     @classmethod
     def setUpClass(cls):
         cls.driver = webdriver.Chrome()
@@ -21,7 +23,6 @@ class LoginTest(unittest.TestCase):
 
     def test_01_valid_login(self):
         driver = self.driver
-
         driver.get("http://unifyng.inventum.co/login")
 
         login = LoginPage(driver)
@@ -39,9 +40,9 @@ class LoginTest(unittest.TestCase):
 
         time.sleep(2)
 
-    def test_02_invalid_login_username(self):
-        driver = self.driver
 
+    def test_02_valid_login(self):
+        driver = self.driver
         driver.get("http://unifyng.inventum.co/login")
 
         login = LoginPage(driver)
@@ -50,7 +51,6 @@ class LoginTest(unittest.TestCase):
         login.enter_username("sachin")
         login.enter_password("password")
         login.click_login()
-
 
         dashboard = DashboardPage(driver)
         time.sleep(2)

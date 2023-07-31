@@ -13,6 +13,7 @@ class LoginPage():
         self.password_textbox_id   = Locators.password_textbox_id
         self.tenantLogin_Button_id = Locators.tenantLogin_Button_id
         self.invalidUsername_message_xpath = "//span[@id='input-error']"
+
     def enter_tenant(self, tenantName):
         self.driver.find_element(By.ID, self.tenantName_textbox_id).clear()
         self.driver.find_element(By.ID, self.tenantName_textbox_id).send_keys(tenantName)
