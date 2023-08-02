@@ -19,8 +19,7 @@ driver.find_element(By.XPATH, "//input[@id='username']").send_keys("priyanshu")
 driver.find_element(By.XPATH, "//input[@id='password']").send_keys("password")
 driver.find_element(By.XPATH, "//input[@id='kc-login']").click()
 time.sleep(3)
-driver.find_element(By.XPATH, "//span[normalize-space()='Settings']").click()
-driver.find_element(By.XPATH, "//span[normalize-space()='Site Settings']").click()
+driver.find_element(By.XPATH, "//span[normalize-space()='TestSettings']").click()
+driver.find_element(By.XPATH, "//span[normalize-space()='Site TestSettings']").click()
 
 time.sleep(2)
-driv
