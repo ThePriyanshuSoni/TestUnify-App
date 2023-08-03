@@ -4,10 +4,10 @@ import time
 import unittest
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
 from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
-from UnifyNG.POM.Pages.ProductCatalogs.ProductFamilies.addProductFamilyPage import AddProductFamilyPage
+from UnifyNG.POM.Pages.ProductCatalogs.Product.addProductPage import AddProductPage
 
 
-class AddProductFamily(unittest.TestCase):
+class AddProduct(unittest.TestCase):
 
     driver = None
 
@@ -18,7 +18,7 @@ class AddProductFamily(unittest.TestCase):
         cls.driver.maximize_window()
 
 
-    def test_01_valid_add_product_family(self):
+    def test_01_valid_add_product(self):
         driver = self.driver
         driver.get("http://unifyng.inventum.co/login")
 
@@ -32,15 +32,22 @@ class AddProductFamily(unittest.TestCase):
 
         dashboard = DashboardPage(driver)
         dashboard.click_product_catalogs()
-        dashboard.click_product_families()
-        time.sleep(2)
+        dashboard.click_product()
 
-        family = AddProductFamilyPage(driver)
-        family.click_add_product_family()
-        family.enter_product_family_name("Priyanshu")
-        family.enter_description("Hello there Priyanshu Here!")
-        family.click_save()
-
+        product = AddProductPage(driver)
+        product.click_add_product()
+        product.click_product_family()
+        product.select_product_family()
+        product.enter_product_name("Priyanshu")
+        product.enter_description_name("Hello There Its me :)")
+        time.sleep(1)
+        product.click_radio_recent_usage()
+        time.sleep(1)
+        # product.click_enable_webhook_toggle()
+        # time.sleep(2)
+        # driver.execute_script("scrollBy(0,300);")
+        # time.sleep(5)
+        product.click_save_button()
 
         time.sleep(5)
 
@@ -48,5 +55,5 @@ class AddProductFamily(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print(">>> Product Family Added Successfully.")
+        print(">>> Product Added Successfully.")
 
