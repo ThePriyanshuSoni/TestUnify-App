@@ -12,7 +12,6 @@ class AddCustomerPage():
         self.firstname_textbox_id      = Locators.firstname_textbox_id
         self.lastname_textbox_id       = Locators.lastname_textbox_id
         self.biller_dropdown_id        = Locators.biller_dropdown_id
-        self.select_biller_xpath       = Locators.select_biller_xpath
         self.label_dropdown_id         = Locators.label_dropdown_id
         self.notes_textbox_id          = Locators.notes_textbox_id
         self.services_dropdown_id      = Locators.services_dropdown_id
@@ -44,8 +43,8 @@ class AddCustomerPage():
     def click_biller(self):
         self.driver.find_element(By.ID, self.biller_dropdown_id).click()
 
-    def select_biller(self):
-        self.driver.find_element(By.XPATH, self.select_biller_xpath).click()
+    def select_biller(self, k1, k2):
+        self.driver.find_element(By.ID, self.biller_dropdown_id).send_keys(k1, k2)
 
     def click_label(self):
         self.driver.find_element(By.ID, self.label_dropdown_id).click()
@@ -94,3 +93,5 @@ class AddCustomerPage():
 
     def click_save(self):
         self.driver.find_element(By.XPATH, self.save_button_xpath).click()
+
+

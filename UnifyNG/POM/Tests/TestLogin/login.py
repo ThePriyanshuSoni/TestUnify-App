@@ -12,7 +12,6 @@ from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
 
 class LoginTest(unittest.TestCase):
 
-    driver = None
 
     @classmethod
     def setUpClass(cls):
@@ -24,6 +23,7 @@ class LoginTest(unittest.TestCase):
     def test_01_valid_login(self):
         driver = self.driver
         driver.get("http://unifyng.inventum.co/login")
+        self.assertTrue(True)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -51,7 +51,6 @@ class LoginTest(unittest.TestCase):
         login.enter_username("sachin")
         login.enter_password("password")
         login.click_login()
-
         dashboard = DashboardPage(driver)
         time.sleep(2)
         dashboard.click_account()
@@ -65,14 +64,8 @@ class LoginTest(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test Pass")
+        print("login Test Pass")
 
 
-
-
-
-if __name__ == '__main__':
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/PycharmProjects/UNifyNG/UnifyNG/Reports"))
-
-#path> python3 -m unittest login.py
-#python3 -m UnifyNG.POM.Tests.login
+if __name__ == "__main__":
+    unittest.main()

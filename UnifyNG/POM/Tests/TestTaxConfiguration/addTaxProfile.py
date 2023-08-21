@@ -5,14 +5,14 @@ import time
 import unittest
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
 from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
-from UnifyNG.POM.Pages.ProductCatalogs.PriceBook.addPriceBookPage import AddPriceBookPage
+from UnifyNG.POM.Pages.TaxConfiguration.addTaxProfilePage import AddTaxProfilePage
 import string
 import random
 
 
 
 
-class AddPriceBook(unittest.TestCase):
+class AddTaxProfile(unittest.TestCase):
     driver = None
 
     @classmethod
@@ -21,7 +21,7 @@ class AddPriceBook(unittest.TestCase):
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
-    def test_01_valid_add_price_book(self):
+    def test_01_valid_add_tax_profile(self):
         driver = self.driver
         driver.get("http://unifyng.inventum.co/login")
 
@@ -34,25 +34,23 @@ class AddPriceBook(unittest.TestCase):
         time.sleep(2)
 
         dashboard = DashboardPage(driver)
-        dashboard.click_product_catalogs()
-        dashboard.click_price_book()
+        dashboard.click_tax_configuration()
 
-        price = AddPriceBookPage(driver)
-        time.sleep(3)
-        price.click_add_price_book()
-        price.enter_price_book_name(pb)
-        price.click_disable_price_toggle()
-        time.sleep(2)
-        price.click_save_button()
+        tprofile = AddTaxProfilePage(driver)
+        tprofile.click_add_tax_profile()
+        tprofile.enter_profile_name(pb)
+        tprofile.click_save()
+
         time.sleep(5)
-
-
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
         print(">>> Price Book Added Successfully.")
+
+
+
 
 
 if __name__ == "__main__":

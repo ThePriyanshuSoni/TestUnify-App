@@ -23,6 +23,9 @@ class DashboardPage():
         self.product_families_xpath  = "//span[normalize-space()='Product Families']"
         self.product_xpath           = "//span[normalize-space()='Product']"
         self.price_book_xpath        = "//span[normalize-space()='Price Book']"
+        #Tax Profile
+        self.tax_configuration_xpath = "//span[normalize-space()='Tax Configuration']"
+
 
     def click_account(self):
         self.driver.find_element(By.XPATH, self.account_link_xpath).click()
@@ -68,3 +71,9 @@ class DashboardPage():
 
     def click_price_book(self):
         self.driver.find_element(By.XPATH, self.price_book_xpath).click()
+
+    def page_scroll_to_top(self):
+        self.driver.execute_script("window.scrollTo(0, 0);")
+
+    def click_tax_configuration(self):
+        self.driver.find_element(By.XPATH, self.tax_configuration_xpath).click()
