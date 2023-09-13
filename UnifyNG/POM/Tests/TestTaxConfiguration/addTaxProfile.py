@@ -47,7 +47,7 @@ class AddTaxProfile(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print(">>> Price Book Added Successfully.")
+        print(">>> Tax Profile Created Successfully.")
 
 
 

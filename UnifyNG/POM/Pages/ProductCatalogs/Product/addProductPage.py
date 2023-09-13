@@ -16,6 +16,10 @@ class AddProductPage():
         self.most_recept_usage_radio_xpath  = "//input[@value='most_recent_usage']"
         self.webhook_toggle_button_xpath    = "//input[@name='webhook_enabled']"
         self.save_button_xpath              = "//button[normalize-space()='Save']"
+        self.service_dropdown_id            = "serviceName"
+        self.service_drop_select_xpath      = "//li[@role='option']"
+        self.service_plan_external_id       = "service_external_plan_id"
+        self.validate_plan_button_xpath     = "//button[normalize-space()='Validate']"
 
     def click_add_product(self):
         self.driver.find_element(By.XPATH, self.add_product_xpath).click()
@@ -32,6 +36,12 @@ class AddProductPage():
     def enter_description_name(self, desc):
         self.driver.find_element(By.ID, self.product_description_textbox_id).send_keys(desc)
 
+    def click_select_service(self):
+        self.driver.find_element(By.ID, self.service_dropdown_id).click()
+
+    def select_service(self):
+        self.driver.find_element(By.XPATH, self.service_drop_select_xpath).click()
+
     def click_radio_recent_usage(self):
         self.driver.find_element(By.XPATH, self.most_recept_usage_radio_xpath).click()
 
@@ -40,4 +50,10 @@ class AddProductPage():
 
     def click_save_button(self):
         self.driver.find_element(By.XPATH, self.save_button_xpath).click()
+
+    def enter_service_plan_id(self, plan):
+        self.driver.find_element(By.ID, self.service_plan_external_id).send_keys(plan)
+
+    def click_validate(self):
+        self.driver.find_element(By.XPATH, self.validate_plan_button_xpath).click()
 

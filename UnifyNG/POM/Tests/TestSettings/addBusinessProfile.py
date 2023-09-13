@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
+import random
+import string
 import unittest
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
 from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
@@ -40,8 +42,8 @@ class TestAddBusinessProfile(unittest.TestCase):
 
         profile = AddBusinessProfilePage(driver)
         profile.click_add_bussiness_profile()
-        profile.enter_businessname("Technify")
-        profile.enter_cin_number("CIN04FA030")
+        profile.enter_businessname(randomName)
+        profile.enter_cin_number(randomStrUpper)
         profile.enter_address("TG1 Xerex, MG Road-1")
         profile.click_country()
         profile.select_country()
@@ -50,7 +52,7 @@ class TestAddBusinessProfile(unittest.TestCase):
         profile.select_state()
         profile.enter_city("Noida")
         profile.enter_pincode("201301")
-        profile.enter_phone("9123456780")
+        profile.enter_phone(randomMobile)
         profile.enter_email("priyanshu@inventum.in")
         profile.enter_website("http://priyanshu.inventum.co")
         profile.click_timezone()
@@ -66,3 +68,14 @@ class TestAddBusinessProfile(unittest.TestCase):
         cls.driver.quit()
         print(" Business Profile Created Successfully.")
 
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+n = 7
+m = 10
+name = ''.join(random.choices(string.ascii_lowercase, k=n))
+randomName = str(name)
+randomMobile = ''.join(random.choices(string.octdigits, k=m))
+randomStrUpper = ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))

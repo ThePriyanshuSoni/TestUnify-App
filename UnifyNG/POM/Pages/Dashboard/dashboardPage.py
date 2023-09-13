@@ -12,8 +12,8 @@ class DashboardPage():
         self.account_link_xpath     = Locators.account_link_xpath
         self.account_logout_xpath   = Locators.account_logout_xpath
         self.add_new_xpath          = "//button[normalize-space()='Add New']"
-        self.settings_xpath         = "//span[normalize-space()='TestSettings']"
-        self.site_settings_xpath    = "//span[normalize-space()='Site TestSettings']"
+        self.settings_xpath         = "//span[normalize-space()='Settings']"
+        self.site_settings_xpath    = "//span[normalize-space()='Site Settings']"
         self.business_profile_xpath = "//span[normalize-space()='Business Profile']"
         self.billing_frequency_xpath= "//span[normalize-space()='Billing Frequency']"
         self.billing_cycle_xpath    = "//span[normalize-space()='Billing Cycle']"

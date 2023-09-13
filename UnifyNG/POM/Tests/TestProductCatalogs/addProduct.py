@@ -41,6 +41,10 @@ class AddProduct(unittest.TestCase):
         product.enter_product_name("Priyanshu")
         product.enter_description_name("Hello There Its me :)")
         time.sleep(1)
+        product.click_select_service()
+        product.select_service()
+        product.enter_service_plan_id("64f6eaf4d8319a4fa6014cbe")
+        product.click_validate()
         product.click_radio_recent_usage()
         time.sleep(1)
         # product.click_enable_webhook_toggle()
@@ -56,4 +60,8 @@ class AddProduct(unittest.TestCase):
         cls.driver.close()
         cls.driver.quit()
         print(">>> Product Added Successfully.")
+
+
+if __name__ == "__main__":
+    unittest.main()
 
