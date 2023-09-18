@@ -23,7 +23,6 @@ class LoginTest(unittest.TestCase):
     def test_01_valid_login(self):
         driver = self.driver
         driver.get("http://unifyng.inventum.co/login")
-        self.assertTrue(True)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -37,7 +36,6 @@ class LoginTest(unittest.TestCase):
         dashboard.click_account()
         time.sleep(2)
         dashboard.click_logout()
-
         time.sleep(2)
 
 
@@ -56,7 +54,75 @@ class LoginTest(unittest.TestCase):
         dashboard.click_account()
         time.sleep(2)
         dashboard.click_logout()
+        time.sleep(2)
 
+
+    def test_03_invalid_login(self):
+        driver = self.driver
+        driver.get("http://unifyng.inventum.co/login")
+
+        login = LoginPage(driver)
+        login.enter_tenant("wrongtenant")
+        login.enter_continue()
+        login.enter_username("sachin")
+        login.enter_password("password")
+        login.click_login()
+        dashboard = DashboardPage(driver)
+        time.sleep(2)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
+        time.sleep(2)
+
+    def test_04_invalid_login(self):
+        driver = self.driver
+        driver.get("http://unifyng.inventum.co/login")
+
+        login = LoginPage(driver)
+        login.enter_tenant("priyanshu")
+        login.enter_continue()
+        login.enter_username("priyanshus")
+        login.enter_password("password")
+        login.click_login()
+        dashboard = DashboardPage(driver)
+        time.sleep(2)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
+        time.sleep(2)
+
+    def test_05_invalid_login(self):
+        driver = self.driver
+        driver.get("http://unifyng.inventum.co/login")
+
+        login = LoginPage(driver)
+        login.enter_tenant("priyanshu")
+        login.enter_continue()
+        login.enter_username("priyanshu")
+        login.enter_password("passwordss")
+        login.click_login()
+        dashboard = DashboardPage(driver)
+        time.sleep(2)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
+        time.sleep(2)
+
+    def test_06_invalid_login(self):
+        driver = self.driver
+        driver.get("http://unifyng.inventum.co/login")
+
+        login = LoginPage(driver)
+        login.enter_tenant("priyanshu")
+        login.enter_continue()
+        login.enter_username("priyansh")
+        login.enter_password("passwordss")
+        login.click_login()
+        dashboard = DashboardPage(driver)
+        time.sleep(2)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
         time.sleep(2)
 
 
@@ -68,4 +134,4 @@ class LoginTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))

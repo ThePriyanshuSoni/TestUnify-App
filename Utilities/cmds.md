@@ -5,9 +5,17 @@ if __name__ == '__main__':
     unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))
 
 #path> python3 -m unittest login.py
-
-
 #python3 -m UnifyNG.POM.Tests.login
+
+
+
+step 1.
+go to project dir
+cd /home/priyansu/Desktop/testing/unifyng-automation-testing
+
+step 2.
+run using this cammand
+#python3 -m UnifyNG.POM.Tests.TestLogin.login
 
 
 

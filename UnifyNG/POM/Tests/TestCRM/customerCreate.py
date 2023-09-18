@@ -20,7 +20,55 @@ class TestCustomerCreate(unittest.TestCase):
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
-    def test_01_valid_create(self):
+    def test_01_valid_create_mandatory(self):
+        driver = self.driver
+        driver.get("http://unifyng.inventum.co/login")
+
+        login = LoginPage(driver)
+        login.enter_tenant("priyanshu")
+        login.enter_continue()
+        login.enter_username("priyanshu")
+        login.enter_password("password")
+        login.click_login()
+
+        dashboard = DashboardPage(driver)
+        time.sleep(2)
+        dashboard.click_crm()
+        dashboard.click_customers()
+        time.sleep(2)
+        dashboard.click_add_new()
+
+        # listing = CustomerListingPage()
+        # listing.click_add_new()
+
+        customer = AddCustomerPage(driver)
+        customer.enter_customerid(randomStrUpper)
+        customer.enter_firstname(randomName)
+        customer.click_biller()
+        customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
+        customer.enter_email("testing@gmail.com")
+        customer.enter_mobile(randomMobile)
+        customer.enter_name("Priyanshu Test")
+        customer.enter_address_line("TG1 Xerex, MG Road, Santa Cruz, Vasi")
+        customer.click_country()
+        customer.select_country()
+        customer.click_state()
+        time.sleep(3)
+        customer.select_state()
+        customer.enter_city("Mumbai")
+        customer.enter_pincode("100211")
+        dashboard.page_scroll_to_top()
+        time.sleep(2)
+        customer.click_save()
+        time.sleep(3)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
+
+
+        time.sleep(5)
+
+    def test_02_valid_create_all(self):
         driver = self.driver
         driver.get("http://unifyng.inventum.co/login")
 
@@ -70,8 +118,6 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_account()
         time.sleep(2)
         dashboard.click_logout()
-
-
         time.sleep(5)
 
 
