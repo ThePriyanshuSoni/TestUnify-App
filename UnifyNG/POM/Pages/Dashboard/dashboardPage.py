@@ -26,6 +26,9 @@ class DashboardPage():
         #Tax Profile
         self.tax_configuration_xpath = "//span[normalize-space()='Tax Configuration']"
 
+        #errors
+        self.error_popup_xpath       = "//div[contains(text(),'Please check the form carefully for errors!')]"
+
 
     def click_account(self):
         self.driver.find_element(By.XPATH, self.account_link_xpath).click()
@@ -77,3 +80,4 @@ class DashboardPage():
 
     def click_tax_configuration(self):
         self.driver.find_element(By.XPATH, self.tax_configuration_xpath).click()
+

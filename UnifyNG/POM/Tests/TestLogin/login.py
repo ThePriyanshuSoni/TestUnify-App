@@ -22,12 +22,12 @@ class LoginTest(unittest.TestCase):
 
     def test_01_valid_login(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get("http://testunifyng.inventum.co/login")
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant("ketan")
         login.enter_continue()
-        login.enter_username("priyanshu")
+        login.enter_username("ketan")
         login.enter_password("password")
         login.click_login()
 

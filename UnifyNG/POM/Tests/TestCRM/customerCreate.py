@@ -1,4 +1,6 @@
 from selenium import webdriver
+import HtmlTestRunner
+from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import random
 import time
@@ -10,9 +12,7 @@ from UnifyNG.POM.Pages.CRM.addCustomerPage import AddCustomerPage
 
 
 
-
 class TestCustomerCreate(unittest.TestCase):
-
 
     @classmethod
     def setUpClass(cls):
@@ -32,14 +32,11 @@ class TestCustomerCreate(unittest.TestCase):
         login.click_login()
 
         dashboard = DashboardPage(driver)
-        time.sleep(2)
+        time.sleep(3)
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(2)
         dashboard.click_add_new()
-
-        # listing = CustomerListingPage()
-        # listing.click_add_new()
 
         customer = AddCustomerPage(driver)
         customer.enter_customerid(randomStrUpper)
@@ -80,7 +77,7 @@ class TestCustomerCreate(unittest.TestCase):
         login.click_login()
 
         dashboard = DashboardPage(driver)
-        time.sleep(2)
+        time.sleep(3)
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(2)
@@ -121,6 +118,41 @@ class TestCustomerCreate(unittest.TestCase):
         time.sleep(5)
 
 
+    def test_03_error_popup_verify(self):
+        driver = self.driver
+        driver.get("http://unifyng.inventum.co/login")
+
+        login = LoginPage(driver)
+        login.enter_tenant("priyanshu")
+        login.enter_continue()
+        login.enter_username("priyanshu")
+        login.enter_password("password")
+        login.click_login()
+
+        dashboard = DashboardPage(driver)
+        time.sleep(3)
+        dashboard.click_crm()
+        dashboard.click_customers()
+        time.sleep(2)
+        dashboard.click_add_new()
+
+        customer = AddCustomerPage(driver)
+        customer.click_save()
+        time.sleep(3)
+        error = driver.find_element(By.XPATH, "//div[contains(text(),'Please check the form carefully for errors!')]")
+        popup_text = "Please check the form carefully for errors!"
+        if popup_text in error.text:
+            print(f"The popup contains the {popup_text}.")
+        else:
+            print(f"The popup does not contain the error: {popup_text}.")
+
+        time.sleep(3)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
+
+        time.sleep(5)
+
 
 
     @classmethod
@@ -130,12 +162,15 @@ class TestCustomerCreate(unittest.TestCase):
         print("Test Pass")
 
 
-if __name__ == "__main__":
-    unittest.main()
-
 n = 7
 m = 10
 name = ''.join(random.choices(string.ascii_lowercase, k=n))
 randomName = str(name)
 randomMobile = ''.join(random.choices(string.octdigits, k=m))
 randomStrUpper = ''.join(random.choices(string.ascii_uppercase + string.digits, k=n))
+
+
+if __name__ == "__main__":
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))
+
+
