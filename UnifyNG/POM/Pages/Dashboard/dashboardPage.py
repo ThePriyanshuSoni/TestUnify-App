@@ -6,6 +6,7 @@ class DashboardPage():
 
     def __init__(self, driver):
         self.driver = driver
+
         #CRM
         self.crm_management_xpath   = "//span[normalize-space()='CRM Management']"
         self.customers_xpath        = "//span[normalize-space()='Customers']"

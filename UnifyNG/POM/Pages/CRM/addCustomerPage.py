@@ -5,6 +5,8 @@ import random
 import string
 
 
+
+
 class AddCustomerPage():
 
     def __init__(self, driver):
@@ -37,8 +39,8 @@ class AddCustomerPage():
         self.driver.find_element(By.ID, self.crm_customerid_textbox_id).clear()
         self.driver.find_element(By.ID, self.crm_customerid_textbox_id).send_keys(''.join(random.choices(string.ascii_uppercase + string.digits, k=8)))
 
-    def enter_firstname(self):
-        self.driver.find_element(By.ID, self.firstname_textbox_id).send_keys(''.join(random.choices(string.ascii_lowercase, k=8)))
+    def enter_firstname(self, firstname):
+        self.driver.find_element(By.ID, self.firstname_textbox_id).send_keys(firstname)
 
     def enter_lastname(self):
         self.driver.find_element(By.ID, self.lastname_textbox_id).send_keys(''.join(random.choices(string.ascii_lowercase, k=6)))
@@ -61,8 +63,8 @@ class AddCustomerPage():
     def enter_email(self, email):
         self.driver.find_element(By.ID, self.email_textbox_id).send_keys(email)
 
-    def enter_mobile(self):
-        self.driver.find_element(By.ID, self.mobile_textbox_id).send_keys(''.join(random.choices(string.octdigits, k=10)))
+    def enter_mobile(self, number):
+        self.driver.find_element(By.ID, self.mobile_textbox_id).send_keys(number)
 
     def enter_name(self, fullName):
         self.driver.find_element(By.ID, self.name_textbox_id).send_keys(fullName)

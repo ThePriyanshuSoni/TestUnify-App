@@ -78,7 +78,6 @@ class AddNgCreatorPage():
         self.text_drop_select_xpath            = "//li[normalize-space()='Text']"
         self.add_data_placeholder_textbox_xpath= "//input[@class='additionalData']"
         self.save_button_placeholder_xpath     = "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium css-rb3asp-MuiButtonBase-root-MuiButton-root']"
-
         self.close_icon_button_xpath           = "//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-lc2yqr-MuiButtonBase-root-MuiIconButton-root']//*[name()='svg']"
 
     def enter_form_title(self, title):

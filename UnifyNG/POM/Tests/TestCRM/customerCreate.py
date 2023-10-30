@@ -19,6 +19,7 @@ class TestCustomerCreate(unittest.TestCase):
         cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
+        unifyng_url = "http://unifyng.inventum.co/"
 
     # def test_001_crm(self):
     #     driver = self.driver
@@ -40,11 +41,11 @@ class TestCustomerCreate(unittest.TestCase):
     #
     #     customer = AddCustomerPage(driver)
     #     customer.enter_customerid()
-    #     customer.enter_firstname()
+    #     customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
     #     customer.click_biller()
     #     customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
     #     customer.enter_email("testing@gmail.com")
-    #     customer.enter_mobile()
+    #     customer.enter_mobile(''.join(random.choices(string.octdigits, k=10)))
     #     customer.enter_name("Priyanshu Test")
     #     customer.enter_address_line("TG1 Xerex, MG Road, Santa Cruz, Vasi")
     #     customer.click_country()
@@ -87,7 +88,7 @@ class TestCustomerCreate(unittest.TestCase):
     #
     #     customer = AddCustomerPage(driver)
     #     customer.enter_customerid()
-    #     customer.enter_firstname()
+    #     customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
     #     customer.enter_lastname()
     #     customer.click_biller()
     #     customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
@@ -95,7 +96,7 @@ class TestCustomerCreate(unittest.TestCase):
     #     customer.select_label(Keys.ARROW_UP, Keys.ENTER)
     #     customer.enter_notes("Hello There this is UnifyNG, How May i help you :)")
     #     customer.enter_email("testing@gmail.com")
-    #     customer.enter_mobile()
+    #     customer.enter_mobile(''.join(random.choices(string.octdigits, k=10)))
     #     customer.enter_name("Priyanshu Test")
     #     customer.enter_address_line("TG1 Xerex, MG Road, Santa Cruz, Vasi")
     #     customer.enter_landmark("Near Walmart Store")
@@ -117,39 +118,39 @@ class TestCustomerCreate(unittest.TestCase):
     #     time.sleep(5)
     #
     #
-    def test_003_crm(self):
-        driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
-
-        login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
-        login.click_login()
-
-        dashboard = DashboardPage(driver)
-        time.sleep(3)
-        dashboard.click_crm()
-        dashboard.click_customers()
-        time.sleep(2)
-        dashboard.click_add_new()
-
-        customer = AddCustomerPage(driver)
-        customer.click_save()
-        time.sleep(3)
-        error = driver.find_element(By.XPATH, "//div[contains(text(),'Please check the form carefully for errors!')]").text
-        popup_text = "Please check the form carefully for errors!"
-        if popup_text in error:
-            print(f"Valid Error:> {popup_text}.")
-        else:
-            print(f"Invalid Error:> {error}.")
-
-        time.sleep(3)
-        dashboard.click_account()
-        time.sleep(2)
-        dashboard.click_logout()
-        time.sleep(2)
+    # def test_003_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     dashboard.click_add_new()
+    #
+    #     customer = AddCustomerPage(driver)
+    #     customer.click_save()
+    #     time.sleep(3)
+    #     error = driver.find_element(By.XPATH, "//div[contains(text(),'Please check the form carefully for errors!')]").text
+    #     popup_text = "Please check the form carefully for errors!"
+    #     if popup_text in error:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #
+    #     time.sleep(3)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
     #
     #
     # def test_004_crm(self):
@@ -172,11 +173,11 @@ class TestCustomerCreate(unittest.TestCase):
     #
     #     customer = AddCustomerPage(driver)
     #     customer.click_auto_generate()
-    #     customer.enter_firstname()
+    #     customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
     #     customer.click_biller()
     #     customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
     #     customer.enter_email("testing@gmail.com")
-    #     customer.enter_mobile()
+    #     customer.enter_mobile(''.join(random.choices(string.octdigits, k=10)))
     #     customer.enter_name("Priyanshu Test")
     #     customer.enter_address_line("TG1 Xerex, MG Road, Santa Cruz, Vasi")
     #     customer.click_country()
@@ -195,7 +196,126 @@ class TestCustomerCreate(unittest.TestCase):
     #     dashboard.click_logout()
     #     time.sleep(2)
 
-    def test_005_crm(self):
+    # def test_005_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     dashboard.click_add_new()
+    #
+    #     customer = AddCustomerPage(driver)
+    #     customer.click_auto_generate()
+    #     customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
+    #     customer.click_biller()
+    #     customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
+    #     customer.enter_email("testing@gmail.com")
+    #     customer.enter_mobile(''.join(random.choices(string.octdigits, k=10)))
+    #     customer.enter_name("Priyanshu Test")
+    #     customer.enter_address_line("TG1 Xerex, MG Road, Santa Cruz, Vasi")
+    #     customer.click_country()
+    #     customer.select_country()
+    #     customer.click_state()
+    #     time.sleep(3)
+    #     customer.select_state()
+    #     customer.enter_city("Mumbai")
+    #     customer.enter_pincode("100211")
+    #     dashboard.page_scroll_to_top()
+    #     time.sleep(2)
+    #     customer.click_save()
+    #     time.sleep(3)
+    #     error = driver.find_element(By.XPATH, "//div[@role='alert']").text
+    #     popup_text = "Recipe for customer module is not created"
+    #     if popup_text in error:
+    #         print(f"Valid Error (When recipe is not created):> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error (When recipe is setup):> {error}.")
+    #     time.sleep(3)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
+
+    # def test_006_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     dashboard.click_add_new()
+    #
+    #     customer = AddCustomerPage(driver)
+    #     customer.enter_firstname("[]@#")
+    #     customer.click_save()
+    #     time.sleep(1)
+    #     error = driver.find_element(By.XPATH, "//p[@id='firstName-helper-text']").text
+    #     popup_text = "Please enter First Name!"
+    #     if error in popup_text:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
+
+    # def test_007_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     dashboard.click_add_new()
+    #
+    #     customer = AddCustomerPage(driver)
+    #     customer.enter_email("abc")
+    #     dashboard.page_scroll_to_top()
+    #     customer.click_save()
+    #     time.sleep(1)
+    #     error = driver.find_element(By.XPATH, "//p[@id='email-helper-text']").text
+    #     popup_text = "Please enter valid Email!"
+    #     if error in popup_text:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
+
+    def test_008_crm(self):
         driver = self.driver
         driver.get("http://unifyng.inventum.co/login")
 
@@ -214,40 +334,21 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_add_new()
 
         customer = AddCustomerPage(driver)
-        customer.click_auto_generate()
-        customer.enter_firstname()
-        customer.click_biller()
-        customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
-        customer.enter_email("testing@gmail.com")
-        customer.enter_mobile()
-        customer.enter_name("Priyanshu Test")
-        customer.enter_address_line("TG1 Xerex, MG Road, Santa Cruz, Vasi")
-        customer.click_country()
-        customer.select_country()
-        customer.click_state()
-        time.sleep(3)
-        customer.select_state()
-        customer.enter_city("Mumbai")
-        customer.enter_pincode("100211")
+        customer.enter_mobile("abc")
         dashboard.page_scroll_to_top()
-        time.sleep(2)
         customer.click_save()
-        time.sleep(3)
-        error = driver.find_element(By.XPATH, "//div[@role='alert']").text
-        popup_text = "Recipe for customer module is not created"
-        if popup_text in error:
-            print(f"Valid Error (When recipe is not created):> {popup_text}.")
+        time.sleep(1)
+        error = driver.find_element(By.XPATH, "//p[@id='phoneNo-helper-text']").text
+        popup_text = "Contact Number cannot be blank!"
+        if error in popup_text:
+            print(f"Valid Error:> {popup_text}.")
         else:
-            print(f"Invalid Error (When recipe is setup):> {error}.")
-        time.sleep(3)
+            print(f"Invalid Error:> {error}.")
+        time.sleep(1)
         dashboard.click_account()
         time.sleep(2)
         dashboard.click_logout()
         time.sleep(2)
-
-
-
-
 
     @classmethod
     def tearDown(cls):
