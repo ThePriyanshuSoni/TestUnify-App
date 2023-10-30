@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from UnifyNG.POM.Locators.Locators import Locators
+import random
+import string
 
 
 class AddCustomerPage():
@@ -29,16 +31,17 @@ class AddCustomerPage():
         self.up_drop_select_xpath      = Locators.up_drop_select_xpath
         self.comment_textbox_id        = Locators.comment_textbox_id
         self.save_button_xpath         = Locators.save_button_xpath
+        self.auto_gen_checkbox_xpath   = "//input[@name='autoGenerate']"
 
-    def enter_customerid(self, customerId):
+    def enter_customerid(self):
         self.driver.find_element(By.ID, self.crm_customerid_textbox_id).clear()
-        self.driver.find_element(By.ID, self.crm_customerid_textbox_id).send_keys(customerId)
+        self.driver.find_element(By.ID, self.crm_customerid_textbox_id).send_keys(''.join(random.choices(string.ascii_uppercase + string.digits, k=8)))
 
-    def enter_firstname(self, firstname):
-        self.driver.find_element(By.ID, self.firstname_textbox_id).send_keys(firstname)
+    def enter_firstname(self):
+        self.driver.find_element(By.ID, self.firstname_textbox_id).send_keys(''.join(random.choices(string.ascii_lowercase, k=8)))
 
-    def enter_lastname(self, lastname):
-        self.driver.find_element(By.ID, self.lastname_textbox_id).send_keys(lastname)
+    def enter_lastname(self):
+        self.driver.find_element(By.ID, self.lastname_textbox_id).send_keys(''.join(random.choices(string.ascii_lowercase, k=6)))
 
     def click_biller(self):
         self.driver.find_element(By.ID, self.biller_dropdown_id).click()
@@ -58,8 +61,8 @@ class AddCustomerPage():
     def enter_email(self, email):
         self.driver.find_element(By.ID, self.email_textbox_id).send_keys(email)
 
-    def enter_mobile(self, phoneNo):
-        self.driver.find_element(By.ID, self.mobile_textbox_id).send_keys(phoneNo)
+    def enter_mobile(self):
+        self.driver.find_element(By.ID, self.mobile_textbox_id).send_keys(''.join(random.choices(string.octdigits, k=10)))
 
     def enter_name(self, fullName):
         self.driver.find_element(By.ID, self.name_textbox_id).send_keys(fullName)
@@ -93,5 +96,8 @@ class AddCustomerPage():
 
     def click_save(self):
         self.driver.find_element(By.XPATH, self.save_button_xpath).click()
+
+    def click_auto_generate(self):
+        self.driver.find_element(By.XPATH, self.auto_gen_checkbox_xpath).click()
 
 

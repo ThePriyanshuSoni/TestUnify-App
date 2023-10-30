@@ -1,11 +1,10 @@
 import HtmlTestRunner
 from selenium import webdriver
 import time
+
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import unittest
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), "../..", ".."))
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
 from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
 
@@ -18,6 +17,12 @@ class LoginTest(unittest.TestCase):
         cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
+
+        # cls.chrome_options = Options()
+        # cls.chrome_options.add_argument('--headless')
+        # cls.driver = webdriver.Chrome(options=chrome_options)
+        # cls.driver.implicitly_wait(10)
+        # cls.driver.maximize_window()
 
 
     def test_01_valid_login(self):

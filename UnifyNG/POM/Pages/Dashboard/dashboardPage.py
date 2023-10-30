@@ -6,9 +6,13 @@ class DashboardPage():
 
     def __init__(self, driver):
         self.driver = driver
-
+        #CRM
         self.crm_management_xpath   = "//span[normalize-space()='CRM Management']"
         self.customers_xpath        = "//span[normalize-space()='Customers']"
+
+        #NgCreator
+        self.ng_creator_xpath       = "//span[normalize-space()='NgCreator']"
+
         self.account_link_xpath     = Locators.account_link_xpath
         self.account_logout_xpath   = Locators.account_logout_xpath
         self.add_new_xpath          = "//button[normalize-space()='Add New']"
@@ -26,8 +30,7 @@ class DashboardPage():
         #Tax Profile
         self.tax_configuration_xpath = "//span[normalize-space()='Tax Configuration']"
 
-        #errors
-        self.error_popup_xpath       = "//div[contains(text(),'Please check the form carefully for errors!')]"
+
 
 
     def click_account(self):
@@ -80,4 +83,7 @@ class DashboardPage():
 
     def click_tax_configuration(self):
         self.driver.find_element(By.XPATH, self.tax_configuration_xpath).click()
+
+    def click_ng_creator(self):
+        self.driver.find_element(By.XPATH, self.ng_creator_xpath).click()
 

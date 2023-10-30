@@ -1,6 +1,10 @@
-a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
 
-b = a[::-1]
+import time
+from selenium import webdriver
 
-print(b)
 
+driver = webdriver.Firefox(executable_path="/home/priyansu/Downloads/geckodriver")
+driver.get("http://www.google.com")
+
+time.sleep(5)
+driver.close()
