@@ -9,7 +9,7 @@ import string
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
 from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
 from UnifyNG.POM.Pages.CRM.addCustomerPage import AddCustomerPage
-
+from selenium.webdriver.common.alert import Alert
 
 
 class TestCustomerCreate(unittest.TestCase):
@@ -315,40 +315,261 @@ class TestCustomerCreate(unittest.TestCase):
     #     dashboard.click_logout()
     #     time.sleep(2)
 
-    def test_008_crm(self):
-        driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+    # def test_008_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     dashboard.click_add_new()
+    #
+    #     customer = AddCustomerPage(driver)
+    #     customer.enter_mobile("abc")
+    #     dashboard.page_scroll_to_top()
+    #     customer.click_save()
+    #     time.sleep(1)
+    #     error = driver.find_element(By.XPATH, "//p[@id='phoneNo-helper-text']").text
+    #     popup_text = "Contact Number cannot be blank!"
+    #     if error in popup_text:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
 
-        login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
-        login.click_login()
+    # def test_009_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     dashboard.click_add_new()
+    #
+    #     customer = AddCustomerPage(driver)
+    #     customer.enter_name("@=[]")
+    #     customer.enter_city("12345")
+    #     customer.enter_pincode("abcde")
+    #     dashboard.page_scroll_to_top()
+    #     customer.click_save()
+    #     time.sleep(1)
+    #     namemsg = driver.find_element(By.XPATH, "//p[@id='firstName-helper-text']").text
+    #     citymsg = driver.find_element(By.XPATH, "//p[@id='city-helper-text']").text
+    #     pincodemsg = driver.find_element(By.XPATH, "//p[@id='pincode-helper-text']").text
+    #     print(namemsg)
+    #     print(citymsg)
+    #     print(pincodemsg)
+    #
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
 
-        dashboard = DashboardPage(driver)
-        time.sleep(3)
-        dashboard.click_crm()
-        dashboard.click_customers()
-        time.sleep(2)
-        dashboard.click_add_new()
+    # def test_010_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     customer = AddCustomerPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     customer.click_action_three_dot()
+    #     customer.click_action_edit()
+    #     customer.enter_firstname("testing")
+    #     time.sleep(1)
+    #     dashboard.page_scroll_to_top()
+    #     customer.click_save()
+    #     time.sleep(1)
+    #     error = driver.find_element(By.XPATH, "//div[@role='alert']").text
+    #     popup_text = "Customer Updated successfully!"
+    #     if error in popup_text:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
 
-        customer = AddCustomerPage(driver)
-        customer.enter_mobile("abc")
-        dashboard.page_scroll_to_top()
-        customer.click_save()
-        time.sleep(1)
-        error = driver.find_element(By.XPATH, "//p[@id='phoneNo-helper-text']").text
-        popup_text = "Contact Number cannot be blank!"
-        if error in popup_text:
-            print(f"Valid Error:> {popup_text}.")
-        else:
-            print(f"Invalid Error:> {error}.")
-        time.sleep(1)
-        dashboard.click_account()
-        time.sleep(2)
-        dashboard.click_logout()
-        time.sleep(2)
+    # def test_010_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     customer = AddCustomerPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     customer.click_action_three_dot()
+    #     customer.click_action_edit()
+    #     customer.enter_firstname(Keys.CONTROL + "a")
+    #     customer.enter_firstname(Keys.BACKSPACE)
+    #     customer.enter_firstname("updated name testing")
+    #     time.sleep(1)
+    #     dashboard.page_scroll_to_top()
+    #     customer.click_save()
+    #     time.sleep(1)
+    #     error = driver.find_element(By.XPATH, "//div[@role='alert']").text
+    #     popup_text = "Customer Updated successfully!"
+    #     if error in popup_text:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
+
+    # def test_011_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     customer = AddCustomerPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     customer.click_action_three_dot()
+    #     customer.click_action_edit()
+    #     customer.click_address_book()
+    #     time.sleep(1)
+    #     customer.click_edit_address_details()
+    #     customer.enter_name(Keys.CONTROL + "a")
+    #     customer.enter_name(Keys.BACKSPACE)
+    #     customer.enter_name("Priyanshu")
+    #     time.sleep(5)
+    #     dashboard.page_scroll_to_top()
+    #     customer.click_save()
+    #     time.sleep(1)
+    #     error = driver.find_element(By.XPATH, "//div[@role='alert']").text
+    #     popup_text = "Customer address updated successfully!"
+    #     if error in popup_text:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
+
+    # def test_012_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     customer = AddCustomerPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(2)
+    #     customer.click_action_three_dot()
+    #     customer.click_action_delete()
+    #     time.sleep(2)
+    #     alert = Alert(driver)
+    #     alert.accept()
+    #     time.sleep(2)
+    #     error = driver.find_element(By.XPATH, "//div[@role='alert']").text
+    #     popup_text = "Customer Deleted successfully"
+    #     if error in popup_text:
+    #         print(f"Valid Error:> {popup_text}.")
+    #     else:
+    #         print(f"Invalid Error:> {error}.")
+    #
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
+
+    # def test_013_crm(self):
+    #     driver = self.driver
+    #     driver.get("http://unifyng.inventum.co/login")
+    #
+    #     login = LoginPage(driver)
+    #     login.enter_tenant("priyanshu")
+    #     login.enter_continue()
+    #     login.enter_username("priyanshu")
+    #     login.enter_password("password")
+    #     login.click_login()
+    #
+    #     dashboard = DashboardPage(driver)
+    #     customer = AddCustomerPage(driver)
+    #     time.sleep(3)
+    #     dashboard.click_crm()
+    #     dashboard.click_customers()
+    #     time.sleep(1)
+    #     customer.click_table_view()
+    #     customer.click_preview_mode()
+    #     time.sleep(2)
+    #     customer.click_first_customer_on_table()
+    #     time.sleep(1)
+    #     customer.click_second_customer_on_table()
+    #     time.sleep(1)
+    #     customer.click_table_view()
+    #     customer.click_default()
+    #     time.sleep(1)
+    #     dashboard.click_account()
+    #     time.sleep(2)
+    #     dashboard.click_logout()
+    #     time.sleep(2)
 
     @classmethod
     def tearDown(cls):

@@ -34,6 +34,16 @@ class AddCustomerPage():
         self.comment_textbox_id        = Locators.comment_textbox_id
         self.save_button_xpath         = Locators.save_button_xpath
         self.auto_gen_checkbox_xpath   = "//input[@name='autoGenerate']"
+        self.action_three_dot_button_xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[7]/div[1]/div[1]/button[1]/*[name()='svg'][1]"
+        self.dot_edit_xpath            = "//li[normalize-space()='Edit']"
+        self.dot_delete_xpath          = "//li[normalize-space()='Delete']"
+        self.address_book_button_xpath = "//button[normalize-space()='Address Book']"
+        self.address_details_edit_icon_xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[3]/div[1]/div[1]/div[1]/div[1]/button[1]/*[name()='svg'][1]/*[name()='path'][1]"
+        self.table_view_button_xpath     = "//button[@id='demo-customized-button']"
+        self.preview_mode_drop_select_xpath = "//li[normalize-space()='Preview Mode']"
+        self.default_drop_select_xpath  = "//li[normalize-space()='Default']"
+        self.first_customer_table_xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]"
+        self.second_customer_table_xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]"
 
     def enter_customerid(self):
         self.driver.find_element(By.ID, self.crm_customerid_textbox_id).clear()
@@ -102,4 +112,32 @@ class AddCustomerPage():
     def click_auto_generate(self):
         self.driver.find_element(By.XPATH, self.auto_gen_checkbox_xpath).click()
 
+    def click_action_three_dot(self):
+        self.driver.find_element(By.XPATH, self.action_three_dot_button_xpath).click()
 
+    def click_action_edit(self):
+        self.driver.find_element(By.XPATH, self.dot_edit_xpath).click()
+
+    def click_action_delete(self):
+        self.driver.find_element(By.XPATH, self.dot_delete_xpath).click()
+
+    def click_address_book(self):
+        self.driver.find_element(By.XPATH, self.address_book_button_xpath).click()
+
+    def click_edit_address_details(self):
+        self.driver.find_element(By.XPATH, self.address_details_edit_icon_xpath).click()
+
+    def click_table_view(self):
+        self.driver.find_element(By.XPATH, self.table_view_button_xpath).click()
+
+    def click_preview_mode(self):
+        self.driver.find_element(By.XPATH, self.preview_mode_drop_select_xpath).click()
+
+    def click_default(self):
+        self.driver.find_element(By.XPATH, self.default_drop_select_xpath).click()
+
+    def click_first_customer_on_table(self):
+        self.driver.find_element(By.XPATH, self.first_customer_table_xpath).click()
+
+    def click_second_customer_on_table(self):
+        self.driver.find_element(By.XPATH, self.second_customer_table_xpath).click()
