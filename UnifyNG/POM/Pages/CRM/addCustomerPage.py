@@ -44,6 +44,14 @@ class AddCustomerPage():
         self.default_drop_select_xpath  = "//li[normalize-space()='Default']"
         self.first_customer_table_xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]"
         self.second_customer_table_xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[2]/div[1]"
+        self.customer_search_filter_textbox_id = "searchText"
+        self.filter_icon_crm_xpath         = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[2]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/button[1]/*[name()='svg'][1]/*[name()='path'][1]"
+        self.search_by_customer_id_filter_xpath = "//input[@name='searchByCustomerId']"
+        self.search_by_email_filter_xpath = "//input[@name='searchByPrimaryEmailId']"
+        self.search_by_contact_filter_xpath = "//input[@name='searchByCustomerContactNo']"
+        self.search_by_name_filter_xpath  = "//input[@name='searchByCustomerName']"
+
+
 
     def enter_customerid(self):
         self.driver.find_element(By.ID, self.crm_customerid_textbox_id).clear()
@@ -141,3 +149,21 @@ class AddCustomerPage():
 
     def click_second_customer_on_table(self):
         self.driver.find_element(By.XPATH, self.second_customer_table_xpath).click()
+
+    def enter_search_filter(self, filter):
+        self.driver.find_element(By.ID, self.customer_search_filter_textbox_id).send_keys(filter)
+
+    def click_filter_icon(self):
+        self.driver.find_element(By.XPATH, self.filter_icon_crm_xpath).click()
+
+    def click_search_by_customer_id(self):
+        self.driver.find_element(By.XPATH, self.search_by_customer_id_filter_xpath).click()
+
+    def click_search_by_email(self):
+        self.driver.find_element(By.XPATH, self.search_by_email_filter_xpath).click()
+
+    def click_search_by_contact_no(self):
+        self.driver.find_element(By.XPATH, self.search_by_contact_filter_xpath).click()
+
+    def click_search_by_name(self):
+        self.driver.find_element(By.XPATH, self.search_by_name_filter_xpath).click()
