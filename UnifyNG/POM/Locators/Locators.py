@@ -9,7 +9,7 @@ class Locators():
     invalidUsername_message_xpath = "//span[@id='input-error']"
 
     #home page objects
-    account_link_xpath = "//button[@aria-label='account of current user']//*[name()='svg']"
+    account_link_xpath = "//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-colorInherit MuiIconButton-edgeEnd MuiIconButton-sizeMedium css-lsarvx-MuiButtonBase-root-MuiIconButton-root']//*[name()='svg']"
     account_logout_xpath = "//li[normalize-space()='Logout']"
 
     #Add customer page objects

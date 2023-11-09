@@ -19,7 +19,6 @@ class TestCustomerCreate(unittest.TestCase):
         cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
-        unifyng_url = "http://unifyng.inventum.co/"
 
     def test_001_crm(self):
         driver = self.driver
