@@ -82,6 +82,9 @@ class DashboardPage():
     def page_scroll_to_top(self):
         self.driver.execute_script("window.scrollTo(0, 0);")
 
+    def page_scroll_to_bottom(self):
+        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+
     def click_tax_configuration(self):
         self.driver.find_element(By.XPATH, self.tax_configuration_xpath).click()
 
