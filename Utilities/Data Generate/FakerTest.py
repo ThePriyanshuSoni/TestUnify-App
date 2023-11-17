@@ -18,5 +18,7 @@ a = fake.word()
 c = fake.street_name()
 d = fake.sentence(nb_words=10)
 e = fake.name()
+f = fake.user_name()
+num = fake.random_int(min=1, max=100)
 
-print(e)
+print(num)

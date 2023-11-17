@@ -18,7 +18,7 @@ class AddBillingFrequencyPage():
         self.driver.find_element(By.XPATH, self.add_biller_button_xpath).click()
 
     def enter_frequency_name(self, freq):
-        self.driver.find_element(By.ID, self.freq_name_textbox_id).send_keys("Test")
+        self.driver.find_element(By.ID, self.freq_name_textbox_id).send_keys(freq)
 
     def click_billing_frequency(self):
         self.driver.find_element(By.ID, self.frequency_dropdown_id).click()

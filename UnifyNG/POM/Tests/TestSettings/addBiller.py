@@ -10,8 +10,7 @@ from UnifyNG.POM.Pages.Settings.SiteSettings.BussinessProfile.addBillerPagePage 
 
 
 class TestAddBiller(unittest.TestCase):
-
-    driver = None
+    base_dev_url = "http://unifyng.inventum.co/login"
 
     @classmethod
     def setUpClass(cls):
@@ -22,7 +21,7 @@ class TestAddBiller(unittest.TestCase):
 
     def test_01_valid_add_biller(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
