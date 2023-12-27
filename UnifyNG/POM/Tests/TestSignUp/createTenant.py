@@ -4,7 +4,7 @@ from selenium import webdriver
 import time
 
 from selenium.webdriver import Keys
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 import unittest
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
@@ -29,10 +29,9 @@ class LoginTest(unittest.TestCase):
         # cls.driver.implicitly_wait(10)
         # cls.driver.maximize_window()
 
-        chrome_options = Options()
-        chrome_options.add_argument('--headless')
-        # chrome_options.add_argument('--disable-gpu')
-        cls.driver = webdriver.Chrome(options=chrome_options)
+        firefox_options = Options()
+        firefox_options.add_argument('--headless')
+        cls.driver = webdriver.Firefox(options=firefox_options)
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
@@ -45,7 +44,7 @@ class LoginTest(unittest.TestCase):
         sign.click_signup()
         sign.click_silver_purchase()
         time.sleep(2)
-        sign.enter_email("newii@inventum.net")
+        sign.enter_email("ntechi@inventum.net")
         sign.click_continue()
         sign.enter_firstname("Swati")
         sign.enter_lastname("Gogia")
