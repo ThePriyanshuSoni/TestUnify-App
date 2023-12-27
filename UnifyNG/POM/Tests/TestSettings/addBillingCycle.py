@@ -5,6 +5,7 @@ import time
 import unittest
 
 from selenium.webdriver import Keys
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
@@ -24,7 +25,10 @@ class TestAddBillingCycle(unittest.TestCase):
 
     @classmethod
     def setUp(cls):
-        cls.driver = webdriver.Chrome()
+        chrome_options = Options()
+        # chrome_options.add_argument('--headless')
+        # chrome_options.add_argument('--disable-gpu')
+        cls.driver = webdriver.Chrome(options=chrome_options)
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 

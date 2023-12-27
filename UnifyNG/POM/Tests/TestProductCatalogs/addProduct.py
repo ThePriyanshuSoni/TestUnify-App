@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.keys import Keys
 import time
 import unittest
@@ -12,8 +13,11 @@ class AddProduct(unittest.TestCase):
     driver = None
 
     @classmethod
-    def setUpClass(cls):
-        cls.driver = webdriver.Chrome()
+    def setUp(cls):
+        chrome_options = Options()
+        # chrome_options.add_argument('--headless')
+        # chrome_options.add_argument('--disable-gpu')
+        cls.driver = webdriver.Chrome(options=chrome_options)
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
@@ -56,10 +60,9 @@ class AddProduct(unittest.TestCase):
         time.sleep(5)
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDown(cls):
         cls.driver.close()
         cls.driver.quit()
-        print(">>> Product Added Successfully.")
 
 
 if __name__ == "__main__":
