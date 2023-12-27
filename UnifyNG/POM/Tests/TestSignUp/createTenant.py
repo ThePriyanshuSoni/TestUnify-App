@@ -44,7 +44,7 @@ class LoginTest(unittest.TestCase):
         sign.click_signup()
         sign.click_silver_purchase()
         time.sleep(2)
-        sign.enter_email("ntechi@inventum.net")
+        sign.enter_email("invvvv@inventum.net")
         sign.click_continue()
         sign.enter_firstname("Swati")
         sign.enter_lastname("Gogia")
