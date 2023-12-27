@@ -1,5 +1,6 @@
 from selenium import webdriver
 import HtmlTestRunner
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import time
@@ -17,17 +18,21 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class TestNgCreator(unittest.TestCase):
-    driver = None
+    base_dev_url = "https://unifyng.inventum.co/login"
+    priyanshu_tenant = "https://priyanshu.inventum.co/"
 
     @classmethod
     def setUp(cls):
-        cls.driver = webdriver.Chrome()
+        chrome_options = Options()
+        # chrome_options.add_argument('--headless')
+        # chrome_options.add_argument('--disable-gpu')
+        cls.driver = webdriver.Chrome(options=chrome_options)
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
     def test_001_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -161,7 +166,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_002_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -192,7 +197,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_003_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -229,7 +234,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_004_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         alert = Alert(driver)
         login = LoginPage(driver)
@@ -313,7 +318,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_005_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -344,7 +349,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_006_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -416,7 +421,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_007_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -460,7 +465,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_008_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -498,7 +503,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_009_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -531,7 +536,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_010_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -587,7 +592,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_011_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -644,7 +649,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_012_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -701,7 +706,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_013_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
         wait = WebDriverWait(driver, 10)
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -765,7 +770,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_014_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
         wait = WebDriverWait(driver, 10)
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -840,7 +845,7 @@ class TestNgCreator(unittest.TestCase):
 
     def test_015_ng_creator(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
         login.enter_continue()

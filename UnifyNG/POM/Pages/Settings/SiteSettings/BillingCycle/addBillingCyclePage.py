@@ -17,6 +17,8 @@ class AddBillingCyclePage():
         self.tuesday_drop_select_xpath= "//li[normalize-space()='TUESDAY']"
         self.save_button_xpath        = "//button[normalize-space()='Save']"
         self.toggle_button_xpath      = "//input[@name='enableThisBilling']"
+        self.dot_edit_xpath           = "//li[@role='menuitem']"
+        self.action_three_dot_button_xpath = "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[6]/div[1]/div[1]/button[1]/*[name()='svg'][1]"
 
 
 
@@ -28,6 +30,9 @@ class AddBillingCyclePage():
 
     def click_billing_frequency(self):
         self.driver.find_element(By.ID, self.frequency_dropdown_id).click()
+
+    def select_billing_frequency(self, bill):
+        self.driver.find_element(By.ID, self.frequency_dropdown_id).click(bill)
 
     def select_weekly(self):
         self.driver.find_element(By.XPATH, self.weekly_drop_select_xpath).click()
@@ -43,4 +48,10 @@ class AddBillingCyclePage():
 
     def click_enable_toggle_button(self):
         self.driver.find_element(By.XPATH, self.toggle_button_xpath).click()
+
+    def click_action_three_dot(self):
+        self.driver.find_element(By.XPATH, self.action_three_dot_button_xpath).click()
+
+    def click_action_edit(self):
+        self.driver.find_element(By.XPATH, self.dot_edit_xpath).click()
 

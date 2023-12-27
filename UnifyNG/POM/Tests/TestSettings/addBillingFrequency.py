@@ -19,11 +19,11 @@ num = fake.random_int(min=1, max=100)
 
 
 class TestAddBillingFrequency(unittest.TestCase):
-    base_dev_url = "http://unifyng.inventum.co/login"
+    base_dev_url = "https://unifyng.inventum.co/login"
     priyanshu_tenant = "http://priyanshu.inventum.co/"
 
     @classmethod
-    def setUpClass(cls):
+    def setUp(cls):
         cls.driver = webdriver.Chrome()
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
@@ -170,7 +170,7 @@ class TestAddBillingFrequency(unittest.TestCase):
 
 
     @classmethod
-    def tearDownClass(cls):
+    def tearDown(cls):
         cls.driver.close()
         cls.driver.quit()
 

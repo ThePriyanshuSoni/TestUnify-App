@@ -19,6 +19,8 @@ c = fake.street_name()
 d = fake.sentence(nb_words=10)
 e = fake.name()
 f = fake.user_name()
-num = fake.random_int(min=1, max=100)
+g = fake.random_int(min=1, max=100)
+h = fake.street_name()
 
-print(num)
+print(h)
+

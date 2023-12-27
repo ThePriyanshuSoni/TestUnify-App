@@ -14,6 +14,10 @@ from selenium.webdriver.common.alert import Alert
 
 class TestCustomerCreate(unittest.TestCase):
 
+    base_dev_url = "https://unifyng.inventum.co/login"
+    priyanshu_tenant = "http://priyanshu.inventum.co/"
+
+
     @classmethod
     def setUp(cls):
         cls.driver = webdriver.Chrome()
@@ -22,7 +26,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_001_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -66,7 +70,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_002_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -116,7 +120,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_003_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -151,7 +155,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_004_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -194,7 +198,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_005_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -244,7 +248,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_006_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -278,7 +282,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_007_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -313,7 +317,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_008_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -348,7 +352,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_009_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -386,7 +390,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_010_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -424,7 +428,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_011_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -465,7 +469,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_012_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -501,7 +505,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_013_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -533,7 +537,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_014_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -567,7 +571,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_015_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -604,7 +608,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_016_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -641,7 +645,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_017_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -678,7 +682,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_018_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -717,7 +721,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_019_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")
@@ -758,7 +762,7 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_020_crm(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.base_dev_url)
 
         login = LoginPage(driver)
         login.enter_tenant("priyanshu")

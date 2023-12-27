@@ -1,3 +1,4 @@
+import HtmlTestRunner
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
@@ -13,7 +14,6 @@ from UnifyNG.POM.Pages.Settings.SiteSettings.BussinessProfile.addBusinessProfile
 
 class TestAddBusinessProfile(unittest.TestCase):
 
-    driver = None
 
     @classmethod
     def setUpClass(cls):
@@ -66,12 +66,13 @@ class TestAddBusinessProfile(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print(" Business Profile Created Successfully.")
+
 
 
 
 if __name__ == "__main__":
-    unittest.main()
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))
+
 
 n = 7
 m = 10
