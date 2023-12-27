@@ -66,7 +66,7 @@ class LoginTest(unittest.TestCase):
         sign.click_upi_id()
         time.sleep(2)
         sign.enter_upi_id("test@icici")
-        time.sleep(1)
+        time.sleep(2)
         webdriver.ActionChains(driver).send_keys(Keys.ENTER).perform()
 
 
