@@ -45,7 +45,7 @@ class LoginTest(unittest.TestCase):
         sign.click_signup()
         sign.click_silver_purchase()
         time.sleep(2)
-        sign.enter_email("swdssi@inventum.net")
+        sign.enter_email("newii@inventum.net")
         sign.click_continue()
         sign.enter_firstname("Swati")
         sign.enter_lastname("Gogia")
@@ -68,18 +68,10 @@ class LoginTest(unittest.TestCase):
         sign.enter_upi_id("test@icici")
         time.sleep(2)
         webdriver.ActionChains(driver).send_keys(Keys.ENTER).perform()
+        driver.switch_to.default_content()
 
 
         time.sleep(5)
-
-
-
-
-
-
-
-
-
 
 
 
