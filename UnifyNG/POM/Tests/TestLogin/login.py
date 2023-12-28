@@ -40,7 +40,7 @@ class LoginTest(unittest.TestCase):
 
         login = LoginPage(driver)
         # login.enter_tenant("priyanshu")
-        # login.enter_continue()
+        # login.click_continue()
         login.enter_username("priyanshu")
         login.enter_password("password")
         login.click_login()
@@ -64,7 +64,7 @@ class LoginTest(unittest.TestCase):
 
         login = LoginPage(driver)
         # login.enter_tenant("priyanshu")
-        # login.enter_continue()
+        # login.click_continue()
         login.enter_username("priyanshu")
         login.enter_password(fake_word)
         login.click_login()
@@ -82,7 +82,7 @@ class LoginTest(unittest.TestCase):
 
         login = LoginPage(driver)
         # login.enter_tenant("priyanshu")
-        # login.enter_continue()
+        # login.click_continue()
         login.enter_username("hellotest")
         login.enter_password("password")
         login.click_login()
@@ -100,7 +100,7 @@ class LoginTest(unittest.TestCase):
 
         login = LoginPage(driver)
         # login.enter_tenant("priyanshu")
-        # login.enter_continue()
+        # login.click_continue()
         login.enter_username(fake_word)
         login.enter_password(fake_word)
         login.click_login()

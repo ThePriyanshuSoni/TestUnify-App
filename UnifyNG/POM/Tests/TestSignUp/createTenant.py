@@ -30,7 +30,7 @@ class LoginTest(unittest.TestCase):
         # cls.driver.maximize_window()
 
         firefox_options = Options()
-        firefox_options.add_argument('--headless')
+        #firefox_options.add_argument('--headless')
         cls.driver = webdriver.Firefox(options=firefox_options)
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
@@ -44,7 +44,7 @@ class LoginTest(unittest.TestCase):
         sign.click_signup()
         sign.click_silver_purchase()
         time.sleep(2)
-        sign.enter_email("invdhghddvvv@inventum.net")
+        sign.enter_email("swati.gogia@inventum.net")
         sign.click_continue()
         sign.enter_firstname("Swati")
         sign.enter_lastname("Gogia")
@@ -68,11 +68,31 @@ class LoginTest(unittest.TestCase):
         time.sleep(2)
         webdriver.ActionChains(driver).send_keys(Keys.ENTER).perform()
         driver.switch_to.default_content()
-
-
-        time.sleep(5)
-
-
+        time.sleep(6)
+        sign.enter_org_name("swati")
+        time.sleep(1)
+        sign.click_verify_org()
+        time.sleep(1)
+        sign.click_verify_login()
+        time.sleep(1)
+        login = LoginPage(driver)
+        login.enter_tenant("swati")
+        login.click_continue()
+        time.sleep(1)
+        login.enter_username("swati")
+        login.enter_password("password")
+        login.click_login()
+        time.sleep(1)
+        login.enter_new_password("password")
+        login.enter_confirm_password("password")
+        login.click_submit()
+        time.sleep(2)
+        actual = driver.title
+        expected = "UnifyNG"
+        if actual in expected:
+            print(f"dashboard Page:> {expected}.")
+        else:
+            print(f"Invalid Page:> {actual}.")
 
     @classmethod
     def tearDown(cls):

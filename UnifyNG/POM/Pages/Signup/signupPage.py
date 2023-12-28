@@ -29,6 +29,7 @@ class SignupPage():
         self.upi_textbox_id = "vpa-upi"
         self.org_name_textbox_id = "tenant_name"
         self.verify_button_xpath = "//button[normalize-space()='verify']"
+        self.login_verify_button_xpath = "//button[normalize-space()='Login']"
 
     def click_signup(self):
         self.driver.find_element(By.XPATH, self.tenant_signup_button_xpath).click()
@@ -89,4 +90,7 @@ class SignupPage():
 
     def click_verify_org(self):
         self.driver.find_element(By.XPATH, self.verify_button_xpath).click()
+
+    def click_verify_login(self):
+        self.driver.find_element(By.XPATH, self.login_verify_button_xpath).click()
 

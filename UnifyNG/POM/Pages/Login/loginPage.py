@@ -13,12 +13,15 @@ class LoginPage():
         self.password_textbox_id   = Locators.password_textbox_id
         self.tenantLogin_Button_id = Locators.tenantLogin_Button_id
         self.invalidUsername_message_xpath = "//span[@id='input-error']"
+        self.new_password_id = "password-new"
+        self.confirm_password_id = "password-new"
+        self.submit_button_xpath = "//input[@value='Submit']"
 
     def enter_tenant(self, tenantName):
         self.driver.find_element(By.ID, self.tenantName_textbox_id).clear()
         self.driver.find_element(By.ID, self.tenantName_textbox_id).send_keys(tenantName)
 
-    def enter_continue(self):
+    def click_continue(self):
         self.driver.find_element(By.XPATH, self.continue_button_xpath).click()
 
     def enter_username(self, username):
@@ -35,3 +38,12 @@ class LoginPage():
     def check_invalid_username_message(self, message):
         msg = self.driver.find_element(By.XPATH, self.invalidUsername_message_xpath).text
         return msg
+
+    def enter_new_password(self, new):
+        self.driver.find_element(By.ID, self.new_password_id).send_keys(new)
+
+    def enter_confirm_password(self, confirm):
+        self.driver.find_element(By.ID, self.confirm_password_id).send_keys(confirm)
+
+    def click_submit(self):
+        self.driver.find_element(By.XPATH, self.submit_button_xpath).click()
