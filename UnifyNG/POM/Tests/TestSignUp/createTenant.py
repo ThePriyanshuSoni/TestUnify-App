@@ -101,4 +101,4 @@ class LoginTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/root/ng/unifyng-automation-testing/UnifyNG/Reports"))
