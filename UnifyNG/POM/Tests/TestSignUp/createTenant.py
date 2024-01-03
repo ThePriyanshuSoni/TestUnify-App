@@ -30,9 +30,9 @@ class LoginTest(unittest.TestCase):
         # cls.driver.maximize_window()
 
         firefox_options = Options()
-        firefox_options.add_argument('--headless')
+        #firefox_options.add_argument('--headless')
         cls.driver = webdriver.Firefox(options=firefox_options)
-        cls.driver.implicitly_wait(9)
+        cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
 
