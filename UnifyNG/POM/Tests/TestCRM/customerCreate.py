@@ -6,17 +6,30 @@ import random
 import time
 import unittest
 import string
+
+from selenium.webdriver.firefox.options import Options
+from faker import Faker
 from UnifyNG.POM.Pages.Login.loginPage import LoginPage
 from UnifyNG.POM.Pages.Dashboard.dashboardPage import DashboardPage
 from UnifyNG.POM.Pages.CRM.addCustomerPage import AddCustomerPage
 from selenium.webdriver.common.alert import Alert
 
+fake = Faker(['en_US'])
+fake_word = fake.word()
+fake_first_name = fake.first_name()
+fake_name = fake.user_name()
+cycleName = fake.street_name()
+num = fake.random_int(min=1, max=100)
+
 
 class TestCustomerCreate(unittest.TestCase):
-
-    base_dev_url = "https://unifyng.inventum.co/login"
-    priyanshu_tenant = "http://priyanshu.inventum.co/"
-
+    driver = None
+    url = "https://testunifyng.inventum.co/login"
+    # base_dev_url = "https://unifyng.inventum.co/login"
+    # base_test_url = "https://testunifyng.inventum.co/login"
+    # priyanshu_tenant = "https://priyanshu.inventum.co/"
+    tenant_username = "k"
+    password = "password"
 
     @classmethod
     def setUp(cls):
@@ -24,15 +37,21 @@ class TestCustomerCreate(unittest.TestCase):
         cls.driver.implicitly_wait(10)
         cls.driver.maximize_window()
 
+        # firefox_options = Options()
+        # # firefox_options.add_argument('--headless')
+        # cls.driver = webdriver.Firefox(options=firefox_options)
+        # cls.driver.implicitly_wait(10)
+        # cls.driver.maximize_window()
+
     def test_001_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -44,7 +63,7 @@ class TestCustomerCreate(unittest.TestCase):
 
         customer = AddCustomerPage(driver)
         customer.enter_customerid()
-        customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
+        customer.enter_firstname(fake_first_name)
         customer.click_biller()
         customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
         customer.enter_email("testing@gmail.com")
@@ -67,16 +86,15 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_logout()
         time.sleep(2)
 
-
     def test_002_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -88,7 +106,7 @@ class TestCustomerCreate(unittest.TestCase):
 
         customer = AddCustomerPage(driver)
         customer.enter_customerid()
-        customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
+        customer.enter_firstname(fake_first_name)
         customer.enter_lastname()
         customer.click_biller()
         customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
@@ -107,7 +125,7 @@ class TestCustomerCreate(unittest.TestCase):
         customer.click_state()
         time.sleep(3)
         customer.select_state()
-        customer.enter_comment("Testing")
+        # customer.enter_comment("Testing")
         dashboard.page_scroll_to_top()
         time.sleep(2)
         customer.click_save()
@@ -117,16 +135,15 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_logout()
         time.sleep(5)
 
-
     def test_003_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -139,7 +156,8 @@ class TestCustomerCreate(unittest.TestCase):
         customer = AddCustomerPage(driver)
         customer.click_save()
         time.sleep(3)
-        error = driver.find_element(By.XPATH, "//div[contains(text(),'Please check the form carefully for errors!')]").text
+        error = driver.find_element(By.XPATH,
+                                    "//div[contains(text(),'Please check the form carefully for errors!')]").text
         popup_text = "Please check the form carefully for errors!"
         if popup_text in error:
             print(f"Valid Error:> {popup_text}.")
@@ -152,16 +170,15 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_logout()
         time.sleep(2)
 
-
     def test_004_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -173,7 +190,7 @@ class TestCustomerCreate(unittest.TestCase):
 
         customer = AddCustomerPage(driver)
         customer.click_auto_generate()
-        customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
+        customer.enter_firstname(fake_first_name)
         customer.click_biller()
         customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
         customer.enter_email("testing@gmail.com")
@@ -198,13 +215,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_005_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -216,7 +233,7 @@ class TestCustomerCreate(unittest.TestCase):
 
         customer = AddCustomerPage(driver)
         customer.click_auto_generate()
-        customer.enter_firstname(''.join(random.choices(string.ascii_lowercase, k=8)))
+        customer.enter_firstname(fake_first_name)
         customer.click_biller()
         customer.select_biller(Keys.ARROW_DOWN, Keys.ENTER)
         customer.enter_email("testing@gmail.com")
@@ -248,13 +265,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_006_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -282,13 +299,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_007_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -317,13 +334,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_008_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -352,13 +369,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_009_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -390,13 +407,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_010_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -428,13 +445,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_011_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -469,13 +486,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_012_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -505,13 +522,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_013_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -537,13 +554,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_014_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -552,11 +569,13 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(1)
-        text1 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]").text
+        text1 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]").text
         customer.enter_search_filter(text1)
         customer.enter_search_filter(Keys.ENTER)
         time.sleep(1)
-        text2 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]").text
+        text2 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]").text
 
         if text2 in text1:
             print(f"Valid Customer ID:> {text1}.")
@@ -571,13 +590,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_015_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -586,7 +605,8 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(1)
-        text1 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]").text
+        text1 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]").text
         customer.enter_search_filter(text1)
         customer.enter_search_filter(Keys.ENTER)
         time.sleep(1)
@@ -594,7 +614,8 @@ class TestCustomerCreate(unittest.TestCase):
         customer.click_search_by_email()
         time.sleep(1)
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-        text2 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]").text
+        text2 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[4]/div[1]").text
 
         if text2 in text1:
             print(f"Valid Customer Email:> {text1}.")
@@ -608,13 +629,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_016_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -623,7 +644,8 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(1)
-        text1 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]").text
+        text1 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]").text
         customer.enter_search_filter(text1)
         customer.enter_search_filter(Keys.ENTER)
         time.sleep(1)
@@ -631,7 +653,8 @@ class TestCustomerCreate(unittest.TestCase):
         customer.click_search_by_contact_no()
         time.sleep(1)
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-        text2 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]").text
+        text2 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[5]/div[1]").text
 
         if text2 in text1:
             print(f"Valid Customer Contact No:> {text1}.")
@@ -645,13 +668,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_017_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -660,7 +683,8 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(1)
-        text1 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
+        text1 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
         customer.enter_search_filter(text1)
         customer.enter_search_filter(Keys.ENTER)
         time.sleep(1)
@@ -668,7 +692,8 @@ class TestCustomerCreate(unittest.TestCase):
         customer.click_search_by_name()
         time.sleep(1)
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-        text2 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
+        text2 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
 
         if text2 in text1:
             print(f"Valid Customer Name:> {text1}.")
@@ -682,13 +707,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_018_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -697,7 +722,8 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(1)
-        text1 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
+        text1 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
         customer.enter_search_filter(text1)
         customer.enter_search_filter(Keys.ENTER)
         time.sleep(1)
@@ -707,7 +733,8 @@ class TestCustomerCreate(unittest.TestCase):
         customer.click_search_by_name()
         time.sleep(1)
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-        text2 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
+        text2 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
 
         if text2 in text1:
             print(f"Valid Customer Name:> {text1}.")
@@ -721,13 +748,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_019_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -736,7 +763,8 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(1)
-        text1 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
+        text1 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
         customer.enter_search_filter(text1)
         customer.enter_search_filter(Keys.BACKSPACE)
         customer.enter_search_filter(Keys.BACKSPACE)
@@ -748,7 +776,8 @@ class TestCustomerCreate(unittest.TestCase):
         customer.click_search_by_name()
         time.sleep(1)
         webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-        text2 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
+        text2 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
 
         if text2 in text1:
             print(f"Valid Customer Name:> {text1}.")
@@ -762,13 +791,13 @@ class TestCustomerCreate(unittest.TestCase):
 
     def test_020_crm(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
+        login.enter_tenant(self.tenant_username)
         login.click_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
 
         dashboard = DashboardPage(driver)
@@ -777,7 +806,8 @@ class TestCustomerCreate(unittest.TestCase):
         dashboard.click_crm()
         dashboard.click_customers()
         time.sleep(1)
-        text1 = driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
+        text1 = driver.find_element(By.XPATH,
+                                    "/html[1]/body[1]/div[1]/div[2]/div[1]/main[1]/div[2]/div[2]/div[3]/div[1]/div[1]/div[2]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]").text
         customer.enter_search_filter(text1)
         time.sleep(1)
         customer.click_filter_icon()
@@ -816,8 +846,6 @@ randomName = str(name)
 randomMobile = ''.join(random.choices(string.octdigits, k=m))
 randomStrUpper = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
 
-
 if __name__ == "__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))
-
-
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(
+        output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))

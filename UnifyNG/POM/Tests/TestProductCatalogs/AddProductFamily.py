@@ -21,6 +21,12 @@ name = fake.name()
 
 
 class AddProductFamily(unittest.TestCase):
+    url = "https://testunifyng.inventum.co/login"
+    # base_dev_url = "https://unifyng.inventum.co/login"
+    # base_test_url = "https://testunifyng.inventum.co/login"
+    # priyanshu_tenant = "https://priyanshu.inventum.co/"
+    tenant_username = "k"
+    password = "password"
 
     @classmethod
     def setUp(cls):
@@ -32,199 +38,199 @@ class AddProductFamily(unittest.TestCase):
         cls.driver.maximize_window()
 
 
-    # def test_001_catalog(self):
-    #     driver = self.driver
-    #     driver.get("http://unifyng.inventum.co/login")
-    #
-    #     login = LoginPage(driver)
-    #     login.enter_tenant("priyanshu")
-    #     login.enter_continue()
-    #     login.enter_username("priyanshu")
-    #     login.enter_password("password")
-    #     login.click_login()
-    #     time.sleep(2)
-    #
-    #     dashboard = DashboardPage(driver)
-    #     dashboard.click_product_catalogs()
-    #     dashboard.click_product_families()
-    #     time.sleep(2)
-    #
-    #     family = AddProductFamilyPage(driver)
-    #     family.click_add_product_family()
-    #     family.enter_product_family_name(product_family)
-    #     family.enter_description(description)
-    #     family.click_save()
-    #     time.sleep(1)
-    #     text = driver.find_element(By.XPATH, "//div[@role='alert']").text
-    #     popup_text = "Product Family added successfully"
-    #     if text in popup_text:
-    #         print(f"Valid Alert:> {popup_text}.")
-    #     else:
-    #         print(f"Invalid Alert:> {text}.")
-    #     time.sleep(1)
-    #     dashboard.click_account()
-    #     time.sleep(2)
-    #     dashboard.click_logout()
+    def test_001_catalog(self):
+        driver = self.driver
+        driver.get(self.url)
+
+        login = LoginPage(driver)
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
+        login.click_login()
+        time.sleep(2)
+
+        dashboard = DashboardPage(driver)
+        dashboard.click_product_catalogs()
+        dashboard.click_product_families()
+        time.sleep(2)
+
+        family = AddProductFamilyPage(driver)
+        family.click_add_product_family()
+        family.enter_product_family_name(product_family)
+        family.enter_description(description)
+        family.click_save()
+        time.sleep(1)
+        text = driver.find_element(By.XPATH, "//div[@role='alert']").text
+        popup_text = "Product Family added successfully"
+        if text in popup_text:
+            print(f"Valid Alert:> {popup_text}.")
+        else:
+            print(f"Invalid Alert:> {text}.")
+        time.sleep(1)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
 
 
-    # def test_002_catalog(self):
-    #     driver = self.driver
-    #     driver.get("http://unifyng.inventum.co/login")
-    #
-    #     login = LoginPage(driver)
-    #     login.enter_tenant("priyanshu")
-    #     login.enter_continue()
-    #     login.enter_username("priyanshu")
-    #     login.enter_password("password")
-    #     login.click_login()
-    #     time.sleep(2)
-    #
-    #     dashboard = DashboardPage(driver)
-    #     dashboard.click_product_catalogs()
-    #     dashboard.click_product_families()
-    #     time.sleep(2)
-    #
-    #     family = AddProductFamilyPage(driver)
-    #     family.click_add_product_family()
-    #     family.click_save()
-    #     time.sleep(1)
-    #     text = driver.find_element(By.XPATH, "//p[@id='product_family_name-helper-text']").text
-    #     popup_text = "product family cannot be blank!"
-    #     if text in popup_text:
-    #         print(f"Valid Alert:> {popup_text}.")
-    #     else:
-    #         print(f"Invalid Alert:> {text}.")
-    #     webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-    #     time.sleep(1)
-    #     dashboard.click_account()
-    #     time.sleep(2)
-    #     dashboard.click_logout()
+    def test_002_catalog(self):
+        driver = self.driver
+        driver.get(self.url)
+
+        login = LoginPage(driver)
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
+        login.click_login()
+        time.sleep(2)
+
+        dashboard = DashboardPage(driver)
+        dashboard.click_product_catalogs()
+        dashboard.click_product_families()
+        time.sleep(2)
+
+        family = AddProductFamilyPage(driver)
+        family.click_add_product_family()
+        family.click_save()
+        time.sleep(1)
+        text = driver.find_element(By.XPATH, "//p[@id='product_family_name-helper-text']").text
+        popup_text = "product family cannot be blank!"
+        if text in popup_text:
+            print(f"Valid Alert:> {popup_text}.")
+        else:
+            print(f"Invalid Alert:> {text}.")
+        webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
+        time.sleep(1)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
 
 
-    # def test_003_catalog(self):
-    #     driver = self.driver
-    #     driver.get("http://unifyng.inventum.co/login")
-    #
-    #     login = LoginPage(driver)
-    #     login.enter_tenant("priyanshu")
-    #     login.enter_continue()
-    #     login.enter_username("priyanshu")
-    #     login.enter_password("password")
-    #     login.click_login()
-    #     time.sleep(2)
-    #
-    #     dashboard = DashboardPage(driver)
-    #     dashboard.click_product_catalogs()
-    #     dashboard.click_product_families()
-    #     time.sleep(2)
-    #
-    #     family = AddProductFamilyPage(driver)
-    #     family.click_add_product_family()
-    #     family.enter_product_family_name("Internet-24")
-    #     family.click_save()
-    #     time.sleep(1)
-    #     text = driver.find_element(By.XPATH, "//div[@role='alert']").text
-    #     popup_text = "Product family name must be alphanumeric and can contain space and underscore"
-    #     if text in popup_text:
-    #         print(f"Valid Alert:> {popup_text}.")
-    #     else:
-    #         print(f"Invalid Alert:> {text}.")
-    #     webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
-    #     time.sleep(1)
-    #     dashboard.click_account()
-    #     time.sleep(2)
-    #     dashboard.click_logout()
+    def test_003_catalog(self):
+        driver = self.driver
+        driver.get(self.url)
+
+        login = LoginPage(driver)
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
+        login.click_login()
+        time.sleep(2)
+
+        dashboard = DashboardPage(driver)
+        dashboard.click_product_catalogs()
+        dashboard.click_product_families()
+        time.sleep(2)
+
+        family = AddProductFamilyPage(driver)
+        family.click_add_product_family()
+        family.enter_product_family_name("Internet-24")
+        family.click_save()
+        time.sleep(1)
+        text = driver.find_element(By.XPATH, "//div[@role='alert']").text
+        popup_text = "Product family name must be alphanumeric and can contain space and underscore"
+        if text in popup_text:
+            print(f"Valid Alert:> {popup_text}.")
+        else:
+            print(f"Invalid Alert:> {text}.")
+        webdriver.ActionChains(driver).send_keys(Keys.ESCAPE).perform()
+        time.sleep(1)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
 
 
-    # def test_004_catalog(self):
-    #     driver = self.driver
-    #     driver.get("http://unifyng.inventum.co/login")
-    #
-    #     login = LoginPage(driver)
-    #     login.enter_tenant("priyanshu")
-    #     login.enter_continue()
-    #     login.enter_username("priyanshu")
-    #     login.enter_password("password")
-    #     login.click_login()
-    #     time.sleep(2)
-    #
-    #     dashboard = DashboardPage(driver)
-    #     dashboard.click_product_catalogs()
-    #     dashboard.click_product_families()
-    #     time.sleep(2)
-    #
-    #     family = AddProductFamilyPage(driver)
-    #     family.click_action_three_dot()
-    #     family.click_action_edit()
-    #     family.enter_product_family_name(Keys.CONTROL + "a")
-    #     family.enter_product_family_name(Keys.BACKSPACE)
-    #     family.enter_product_family_name("Internet_24")
-    #     family.click_save()
-    #     time.sleep(1)
-    #     text = driver.find_element(By.XPATH, "//div[@role='alert']").text
-    #     popup_text = "Product Family updated successfully"
-    #     if text in popup_text:
-    #         print(f"Valid Alert:> {popup_text}.")
-    #     else:
-    #         print(f"Invalid Alert:> {text}.")
-    #     time.sleep(1)
-    #     dashboard.click_account()
-    #     time.sleep(2)
-    #     dashboard.click_logout()
+    def test_004_catalog(self):
+        driver = self.driver
+        driver.get(self.url)
+
+        login = LoginPage(driver)
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
+        login.click_login()
+        time.sleep(2)
+
+        dashboard = DashboardPage(driver)
+        dashboard.click_product_catalogs()
+        dashboard.click_product_families()
+        time.sleep(2)
+
+        family = AddProductFamilyPage(driver)
+        family.click_action_three_dot()
+        family.click_action_edit()
+        family.enter_product_family_name(Keys.CONTROL + "a")
+        family.enter_product_family_name(Keys.BACKSPACE)
+        family.enter_product_family_name("Internet_24")
+        family.click_save()
+        time.sleep(1)
+        text = driver.find_element(By.XPATH, "//div[@role='alert']").text
+        popup_text = "Product Family updated successfully"
+        if text in popup_text:
+            print(f"Valid Alert:> {popup_text}.")
+        else:
+            print(f"Invalid Alert:> {text}.")
+        time.sleep(1)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
 
 
-    # def test_005_catalog(self):
-    #     driver = self.driver
-    #     driver.get("http://unifyng.inventum.co/login")
-    #
-    #     login = LoginPage(driver)
-    #     login.enter_tenant("priyanshu")
-    #     login.enter_continue()
-    #     login.enter_username("priyanshu")
-    #     login.enter_password("password")
-    #     login.click_login()
-    #     time.sleep(2)
-    #
-    #     dashboard = DashboardPage(driver)
-    #     dashboard.click_product_catalogs()
-    #     dashboard.click_product_families()
-    #     time.sleep(2)
-    #
-    #     family = AddProductFamilyPage(driver)
-    #     # family.click_add_product_family()
-    #     # family.enter_product_family_name(product_family)
-    #     # family.enter_description(description)
-    #     # family.click_save()
-    #     # time.sleep(1)
-    #     family.click_action_three_dot()
-    #     family.click_action_delete()
-    #     time.sleep(1)
-    #     confirm_text = driver.find_element(By.XPATH, "//p[@class='MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-o9hva5-MuiTypography-root']").text
-    #     family.enter_delete_product_name(confirm_text)
-    #     time.sleep(1)
-    #     family.click_are_you_about_to_delete()
-    #     time.sleep(1)
-    #     text = driver.find_element(By.XPATH, "//div[@role='alert']").text
-    #     popup_text = "Product family deleted successfully"
-    #     if text in popup_text:
-    #         print(f"Valid Alert:> {popup_text}.")
-    #     else:
-    #         print(f"Invalid Alert:> {text}.")
-    #     time.sleep(1)
-    #     dashboard.click_account()
-    #     time.sleep(2)
-    #     dashboard.click_logout()
+    def test_005_catalog(self):
+        driver = self.driver
+        driver.get(self.url)
+
+        login = LoginPage(driver)
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
+        login.click_login()
+        time.sleep(2)
+
+        dashboard = DashboardPage(driver)
+        dashboard.click_product_catalogs()
+        dashboard.click_product_families()
+        time.sleep(2)
+
+        family = AddProductFamilyPage(driver)
+        # family.click_add_product_family()
+        # family.enter_product_family_name(product_family)
+        # family.enter_description(description)
+        # family.click_save()
+        # time.sleep(1)
+        family.click_action_three_dot()
+        family.click_action_delete()
+        time.sleep(1)
+        confirm_text = driver.find_element(By.XPATH, "//p[@class='MuiTypography-root MuiTypography-body1 MuiTypography-gutterBottom css-o9hva5-MuiTypography-root']").text
+        family.enter_delete_product_name(confirm_text)
+        time.sleep(1)
+        family.click_are_you_about_to_delete()
+        time.sleep(1)
+        text = driver.find_element(By.XPATH, "//div[@role='alert']").text
+        popup_text = "Product family deleted successfully"
+        if text in popup_text:
+            print(f"Valid Alert:> {popup_text}.")
+        else:
+            print(f"Invalid Alert:> {text}.")
+        time.sleep(1)
+        dashboard.click_account()
+        time.sleep(2)
+        dashboard.click_logout()
 
 
     def test_007_catalog(self):
         driver = self.driver
-        driver.get("http://unifyng.inventum.co/login")
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(2)
 

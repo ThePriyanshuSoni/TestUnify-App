@@ -19,6 +19,7 @@ num = fake.random_int(min=1, max=100)
 
 
 class LoginTest(unittest.TestCase):
+    driver = None
     base_dev_url = "https://unifyng.inventum.co/login"
     priyanshu_tenant = "https://priyanshu.inventum.co/"
 

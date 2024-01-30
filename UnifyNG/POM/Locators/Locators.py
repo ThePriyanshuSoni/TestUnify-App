@@ -29,7 +29,7 @@ class Locators():
     pincode_textbox_id = "pincode"
     city_textbox_id = "city"
     country_dropdown_id = "country"
-    india_drop_select_xpath = "//li[102]"
+    india_drop_select_xpath = "//li[75]"
     state_dropdown_id = "state"
     up_drop_select_xpath = "//li[normalize-space()='Uttar Pradesh']"
     comment_textbox_id = "64e5d26d30bb831ef954017e"

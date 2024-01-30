@@ -18,8 +18,12 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class TestNgCreator(unittest.TestCase):
-    base_dev_url = "https://unifyng.inventum.co/login"
-    priyanshu_tenant = "https://priyanshu.inventum.co/"
+    url = "https://testunifyng.inventum.co/login"
+    # base_dev_url = "https://unifyng.inventum.co/login"
+    # base_test_url = "https://testunifyng.inventum.co/login"
+    # priyanshu_tenant = "https://priyanshu.inventum.co/"
+    tenant_username = "k"
+    password = "password"
 
     @classmethod
     def setUp(cls):
@@ -32,13 +36,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_001_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -166,13 +170,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_002_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -197,13 +201,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_003_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -234,14 +238,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_004_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
-        alert = Alert(driver)
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -318,13 +321,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_005_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
 
@@ -349,13 +352,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_006_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -421,13 +424,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_007_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
 
@@ -465,13 +468,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_008_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
 
@@ -503,13 +506,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_009_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
 
@@ -536,13 +539,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_010_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -592,13 +595,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_011_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -649,13 +652,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_012_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
 
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -706,13 +709,14 @@ class TestNgCreator(unittest.TestCase):
 
     def test_013_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
         wait = WebDriverWait(driver, 10)
+
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -770,13 +774,14 @@ class TestNgCreator(unittest.TestCase):
 
     def test_014_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
         wait = WebDriverWait(driver, 10)
+
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
@@ -845,12 +850,13 @@ class TestNgCreator(unittest.TestCase):
 
     def test_015_ng_creator(self):
         driver = self.driver
-        driver.get(self.base_dev_url)
+        driver.get(self.url)
+
         login = LoginPage(driver)
-        login.enter_tenant("priyanshu")
-        login.enter_continue()
-        login.enter_username("priyanshu")
-        login.enter_password("password")
+        login.enter_tenant(self.tenant_username)
+        login.click_continue()
+        login.enter_username(self.tenant_username)
+        login.enter_password(self.password)
         login.click_login()
         time.sleep(3)
         dashboard = DashboardPage(driver)
