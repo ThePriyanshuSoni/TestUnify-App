@@ -2,7 +2,6 @@ import HtmlTestRunner
 from faker import Faker
 from selenium import webdriver
 import time
-
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 import unittest
@@ -20,7 +19,6 @@ class LoginTest(unittest.TestCase):
     base_dev_url = "https://unifyng.inventum.co/login"
     priyanshu_tenant = "https://priyanshu.inventum.co/"
 
-
     @classmethod
     def setUp(cls):
         cls.driver = webdriver.Chrome()
@@ -32,7 +30,6 @@ class LoginTest(unittest.TestCase):
         # cls.driver = webdriver.Chrome(options=chrome_options)
         # cls.driver.implicitly_wait(10)
         # cls.driver.maximize_window()
-
 
     def test_001_login(self):
         driver = self.driver
@@ -108,10 +105,9 @@ class LoginTest(unittest.TestCase):
         actual = driver.find_element(By.XPATH, "//span[@id='input-error']").text
         expected = "Invalid username or password."
         if actual in expected:
-            print(f" Valid Error:> {expected}.")
+            print(f"Valid Error:> {expected}.")
         else:
             print(f"Invalid Error:> {actual}.")
-
 
     @classmethod
     def tearDown(cls):
@@ -120,4 +116,5 @@ class LoginTest(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))
+    unittest.main(testRunner=HtmlTestRunner.HTMLTestRunner(
+        output="/home/priyansu/Desktop/testing/unifyng-automation-testing/UnifyNG/Reports"))
